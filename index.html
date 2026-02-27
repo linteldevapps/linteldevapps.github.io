@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lintel Apps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --fg: #1a1a1a;
+            --fg-muted: #6b6b6b;
+            --bg: #fafaf8;
+            --accent: #2d5a27;
+            --border: #e2e0dc;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 6rem;
+        }
+
+        header { margin-bottom: 3.5rem; }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            color: var(--fg-muted);
+            font-size: 1.05rem;
+        }
+
+        section { margin-bottom: 3rem; }
+
+        h2 {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--fg-muted);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        p { margin-bottom: 1rem; font-size: 1rem; }
+
+        .app-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .app-card:hover {
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .app-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+
+        .app-card .desc {
+            color: var(--fg-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .app-card .links a {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-decoration: none;
+            margin-right: 1.25rem;
+            transition: opacity 0.15s;
+        }
+
+        .app-card .links a:hover { opacity: 0.7; }
+
+        .contact-list { list-style: none; }
+        .contact-list li { margin-bottom: 0.6rem; }
+
+        .contact-list a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .contact-list a:hover { border-bottom-color: var(--accent); }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--fg-muted);
+        }
+
+        footer a {
+            color: var(--fg-muted);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.15s;
+        }
+
+        footer a:hover { color: var(--fg); }
+
+        @media (max-width: 480px) {
+            .container { padding: 2.5rem 1.25rem 4rem; }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Lintel Apps</h1>
+            <p class="tagline">Independent developer building useful things for Android.</p>
+        </header>
+
+        <section>
+            <h2>Apps</h2>
+
+            <!-- COPY THIS CARD BLOCK TO ADD MORE APPS -->
+            <div class="app-card">
+                <h3>Frontispiece</h3>
+                <p class="desc">A Calibre companion for tracking reading progress, stats, and syncing across devices.</p>
+                <div class="links">
+                    <a href="https://play.google.com/store/apps/details?id=dev.lintel.frontispiece" target="_blank">Play Store &#8599;</a>
+                    <a href="/privacy">Privacy Policy</a>
+                </div>
+            </div>
+            <!-- END APP CARD -->
+
+        </section>
+
+        <section>
+            <h2>Contact</h2>
+            <ul class="contact-list">
+                <li><a href="mailto:linteldev&#64;gmail.com">linteldev&#64;gmail.com</a></li>
+            </ul>
+        </section>
+
+        <footer>
+            <span>&#169; 2026 Lintel Apps</span>
+            <a href="/privacy">Privacy Policy</a>
+        </footer>
+    </div>
+</body>
+</html>
