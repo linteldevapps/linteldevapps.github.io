@@ -64,40 +64,60 @@
         p { margin-bottom: 1rem; font-size: 1rem; }
 
         .app-card {
+            display: block;
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 10px;
             padding: 1.5rem;
             margin-bottom: 1rem;
-            transition: box-shadow 0.2s ease;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
         }
 
         .app-card:hover {
             box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border-color: #ccc;
         }
 
-        .app-card h3 {
+        .app-card-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+
+        .app-logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .app-card-content { flex: 1; min-width: 0; }
+
+        .app-card-content h3 {
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 0.35rem;
         }
 
-        .app-card .desc {
+        .app-card-content .desc {
             color: var(--fg-muted);
             font-size: 0.95rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0;
         }
 
-        .app-card .links a {
+        .app-card .learn-more {
+            display: block;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border);
             font-family: 'DM Mono', monospace;
             font-size: 0.8rem;
             color: var(--accent);
-            text-decoration: none;
-            margin-right: 1.25rem;
-            transition: opacity 0.15s;
         }
-
-        .app-card .links a:hover { opacity: 0.7; }
 
         .contact-list { list-style: none; }
         .contact-list li { margin-bottom: 0.6rem; }
@@ -135,6 +155,7 @@
         @media (max-width: 480px) {
             .container { padding: 2.5rem 1.25rem 4rem; }
             h1 { font-size: 1.5rem; }
+            .app-logo { width: 52px; height: 52px; border-radius: 12px; }
         }
     </style>
 </head>
@@ -149,14 +170,16 @@
             <h2>Apps</h2>
 
             <!-- COPY THIS CARD BLOCK TO ADD MORE APPS -->
-            <div class="app-card">
-                <h3>Frontispiece</h3>
-                <p class="desc">A Calibre companion for tracking reading progress, stats, and syncing across devices.</p>
-                <div class="links">
-                    <a href="https://play.google.com/store/apps/details?id=dev.lintel.frontispiece" target="_blank">Play Store &#8599;</a>
-                    <a href="/privacy">Privacy Policy</a>
+            <a class="app-card" href="/frontispiece">
+                <div class="app-card-inner">
+                    <img class="app-logo" src="/assets/frontispiece-logo.png" srcset="/assets/frontispiece-logo.png 1x, /assets/frontispiece-logo-2x.png 2x" alt="Frontispiece" width="64" height="64">
+                    <div class="app-card-content">
+                        <h3>Frontispiece</h3>
+                        <p class="desc">A self-hosted e-reader and reading tracker for your Calibre library. Read across devices, track your stats, and own your data.</p>
+                    </div>
                 </div>
-            </div>
+                <span class="learn-more">Learn more &#8594;</span>
+            </a>
             <!-- END APP CARD -->
 
         </section>
