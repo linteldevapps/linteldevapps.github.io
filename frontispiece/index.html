@@ -433,8 +433,9 @@
 
         <section class="overview">
             <h2 class="section-label">Overview</h2>
-            <p>Frontispiece gives your Calibre library a modern reading experience. It connects to your existing Calibre server, lets you read EPUBs directly in the browser or on Android, and tracks every reading session with detailed analytics&#8202;&#8212;&#8202;all running on your own hardware.</p>
-            <p>Pick up exactly where you left off on any device. See how fast you read, when you read, and how far you've come through a series. If you use Hardcover, Frontispiece can scrobble your progress there automatically.</p>
+            <p>Frontispiece is a self-hosted e-reader and reading tracker built around your Calibre library. It connects to your existing Calibre content server, wraps it in a modern web UI and native Android app, and adds everything Calibre doesn't have: a built-in EPUB reader, cross-device position sync, reading session tracking, and deep analytics.</p>
+            <p>You deploy Frontispiece on your own server with Docker Compose. It proxies your Calibre library, manages user accounts, and records every reading session. The web app runs in any browser. The Android app downloads books for offline reading and syncs progress in the background when you're back online.</p>
+            <p>Reading stats go well beyond simple page counts. Frontispiece tracks your speed over time, breaks down reading by time of day, generates heatmaps of your activity, and estimates how long it will take to finish a book or complete a series. It detects gaps in your series, flags library issues like missing metadata or duplicates, and can optionally scrobble your reading activity to Hardcover.</p>
         </section>
 
         <section class="how-it-works">
@@ -498,7 +499,7 @@
                 </div>
                 <div class="feature-card">
                     <h3>Cross-Device Sync</h3>
-                    <p>Your reading position syncs automatically. Start a book on your phone, pick it up on your tablet, finish on the web&#8202;&#8212;&#8202;no manual bookmarks needed.</p>
+                    <p>Your reading position syncs automatically. Start a book on your phone, pick it up on your tablet, finish on the web. No manual bookmarks needed.</p>
                 </div>
                 <div class="feature-card">
                     <h3>Reading Analytics</h3>
@@ -557,7 +558,7 @@
                     <div class="integration-icon">&#128218;</div>
                     <div>
                         <h3>Calibre</h3>
-                        <p>Connects to your existing Calibre content server. Frontispiece reads your library metadata, serves book files, and proxies cover images&#8202;&#8212;&#8202;no migration required.</p>
+                        <p>Connects to your existing Calibre content server. Frontispiece reads your library metadata, serves book files, and proxies cover images. No migration required.</p>
                     </div>
                 </div>
                 <div class="integration-item">
@@ -572,7 +573,7 @@
 
         <div class="callout">
             <h3>Self-hosted &amp; open</h3>
-            <p>Frontispiece runs on your own server. Your reading data, your library, your annotations&#8202;&#8212;&#8202;none of it leaves your infrastructure. Deploy with Docker Compose in minutes.</p>
+            <p>Frontispiece runs on your own server. Your reading data, your library, your annotations. None of it leaves your infrastructure. Deploy with Docker Compose in minutes.</p>
         </div>
 
     </div>
