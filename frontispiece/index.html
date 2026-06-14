@@ -310,27 +310,34 @@
             padding-bottom: 0.5rem;
         }
 
-        .screenshot-placeholder {
+        .screenshot-card {
             flex-shrink: 0;
-            background: var(--card-bg);
-            border: 2px dashed var(--border);
+            margin: 0;
+        }
+
+        .screenshot-image {
+            display: block;
+            border: 1px solid var(--border);
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--fg-muted);
-            font-family: 'DM Mono', monospace;
-            font-size: 0.8rem;
+            background: var(--card-bg);
+            box-shadow: 0 16px 42px rgba(44, 38, 31, 0.12);
+            object-fit: cover;
         }
 
-        .screenshot-placeholder.web {
+        .screenshot-image.web {
             width: 360px;
-            height: 225px;
+            aspect-ratio: 16 / 10;
         }
 
-        .screenshot-placeholder.mobile {
+        .screenshot-image.mobile {
             width: 160px;
-            height: 320px;
+            aspect-ratio: 1 / 2;
+        }
+
+        .screenshot-caption {
+            margin-top: 0.45rem;
+            font-size: 0.75rem;
+            color: var(--fg-muted);
         }
 
         /* -- Integrations -- */
@@ -454,8 +461,8 @@
             .arch-layer { flex-direction: column; }
             .arch-label { width: auto; }
             .arch-connector .arch-label { display: none; }
-            .screenshot-placeholder.web { width: 280px; height: 175px; }
-            .screenshot-placeholder.mobile { width: 130px; height: 260px; }
+            .screenshot-image.web { width: 280px; }
+            .screenshot-image.mobile { width: 130px; }
         }
     </style>
 </head>
@@ -585,19 +592,40 @@
             <div class="screenshot-group">
                 <h3>Web App</h3>
                 <div class="screenshot-row">
-                    <div class="screenshot-placeholder web">Screenshot coming soon</div>
-                    <div class="screenshot-placeholder web">Screenshot coming soon</div>
-                    <div class="screenshot-placeholder web">Screenshot coming soon</div>
+                    <figure class="screenshot-card">
+                        <img class="screenshot-image web" src="/assets/frontispiece/screenshots/web-dashboard.svg" alt="Frontispiece web dashboard showing currently reading books, reading goals, and weekly rhythm" loading="lazy">
+                        <figcaption class="screenshot-caption">Dashboard</figcaption>
+                    </figure>
+                    <figure class="screenshot-card">
+                        <img class="screenshot-image web" src="/assets/frontispiece/screenshots/web-reader.svg" alt="Frontispiece web reader with focused page layout and sync status" loading="lazy">
+                        <figcaption class="screenshot-caption">Web reader</figcaption>
+                    </figure>
+                    <figure class="screenshot-card">
+                        <img class="screenshot-image web" src="/assets/frontispiece/screenshots/web-analytics.svg" alt="Frontispiece reading analytics dashboard with charts, stats, and heatmap" loading="lazy">
+                        <figcaption class="screenshot-caption">Analytics</figcaption>
+                    </figure>
                 </div>
             </div>
 
             <div class="screenshot-group">
                 <h3>Android</h3>
                 <div class="screenshot-row">
-                    <div class="screenshot-placeholder mobile">Screenshot coming soon</div>
-                    <div class="screenshot-placeholder mobile">Screenshot coming soon</div>
-                    <div class="screenshot-placeholder mobile">Screenshot coming soon</div>
-                    <div class="screenshot-placeholder mobile">Screenshot coming soon</div>
+                    <figure class="screenshot-card">
+                        <img class="screenshot-image mobile" src="/assets/frontispiece/screenshots/android-home.svg" alt="Frontispiece Android home screen with current reading progress and queue" loading="lazy">
+                        <figcaption class="screenshot-caption">Home</figcaption>
+                    </figure>
+                    <figure class="screenshot-card">
+                        <img class="screenshot-image mobile" src="/assets/frontispiece/screenshots/android-reader.svg" alt="Frontispiece Android reader showing book text, progress, and sync state" loading="lazy">
+                        <figcaption class="screenshot-caption">Reader</figcaption>
+                    </figure>
+                    <figure class="screenshot-card">
+                        <img class="screenshot-image mobile" src="/assets/frontispiece/screenshots/android-library.svg" alt="Frontispiece Android library screen with downloaded books and search" loading="lazy">
+                        <figcaption class="screenshot-caption">Library</figcaption>
+                    </figure>
+                    <figure class="screenshot-card">
+                        <img class="screenshot-image mobile" src="/assets/frontispiece/screenshots/android-sync.svg" alt="Frontispiece Android offline and sync status screen" loading="lazy">
+                        <figcaption class="screenshot-caption">Sync</figcaption>
+                    </figure>
                 </div>
             </div>
         </section>
