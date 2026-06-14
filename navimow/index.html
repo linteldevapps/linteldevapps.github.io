@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navimow for Home Assistant &#8212; Lintel Apps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>(function(){var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --fg: #1a1a1a;
+            --fg-muted: #6b6b6b;
+            --bg: #fafaf8;
+            --accent: #2d5a27;
+            --accent-light: #e8f0e7;
+            --accent-light-hover: #d9e8d7;
+            --border: #e2e0dc;
+            --card-bg: #ffffff;
+            --code-bg: #f0eeeb;
+        }
+        [data-theme="dark"] {
+            --fg: #d8d8d8;
+            --fg-muted: #8a8a8a;
+            --bg: #121212;
+            --accent: #4a9e44;
+            --accent-light: #1a2e19;
+            --accent-light-hover: #244224;
+            --border: #2a2a2a;
+            --card-bg: #1a1a1a;
+            --code-bg: #1e1e1e;
+        }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+        .top-nav {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 0;
+        }
+        .back-link {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--fg-muted);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+        .back-link:hover { color: var(--fg); }
+        .hero {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 3rem;
+        }
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .hero-logo {
+            width: 112px;
+            height: 112px;
+            border-radius: 24px;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--fg-muted);
+            line-height: 1.5;
+            max-width: 520px;
+            margin-bottom: 1.5rem;
+        }
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.85rem;
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { opacity: 0.88; }
+        .btn-secondary { background: var(--accent-light); color: var(--accent); }
+        .btn-secondary:hover { background: var(--accent-light-hover); }
+        .content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 1.5rem 5rem;
+        }
+        section { margin-bottom: 3.5rem; }
+        .section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--fg-muted);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        p { font-size: 1rem; margin-bottom: 1rem; }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .feature-card, .install-box, .note {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.35rem 1.5rem;
+        }
+        .feature-card h3, .install-box h3, .note h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .feature-card p, .install-box p, .note p {
+            color: var(--fg-muted);
+            font-size: 0.92rem;
+            margin-bottom: 0;
+            line-height: 1.55;
+        }
+        .install-box { margin-top: 1rem; }
+        code {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9em;
+            background: var(--code-bg);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+        }
+        ol {
+            margin-left: 1.35rem;
+            color: var(--fg-muted);
+        }
+        li { margin-bottom: 0.5rem; }
+        a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+        a:hover { border-bottom-color: var(--accent); }
+        footer {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--fg-muted);
+        }
+        footer a { color: var(--fg-muted); border-bottom-color: var(--border); }
+        footer a:hover { color: var(--fg); }
+        .theme-toggle {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--fg-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.15s;
+            z-index: 100;
+            padding: 0;
+        }
+        .theme-toggle:hover { border-color: var(--fg-muted); }
+        .theme-toggle svg { width: 18px; height: 18px; }
+        @media (max-width: 640px) {
+            .hero { padding: 2rem 1.25rem 2.5rem; }
+            .hero-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+            .hero-logo { width: 88px; height: 88px; border-radius: 20px; }
+            h1 { font-size: 1.6rem; }
+            .content { padding: 0 1.25rem 4rem; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+    <nav class="top-nav">
+        <a href="/" class="back-link">&#8592; Lintel Apps</a>
+    </nav>
+    <div class="hero">
+        <div class="hero-inner">
+            <img class="hero-logo" src="/assets/navimow-logo.png" srcset="/assets/navimow-logo.png 1x, /assets/navimow-logo-2x.png 2x" alt="Navimow for Home Assistant" width="112" height="112">
+            <div>
+                <h1>Navimow for Home Assistant</h1>
+                <p class="subtitle">A maintained HACS fork of the Segway Navimow integration for monitoring and controlling Navimow robotic mowers from Home Assistant.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="https://my.home-assistant.io/redirect/hacs_repository/?owner=linteldevapps&amp;repository=NavimowHA&amp;category=Integration" target="_blank" rel="noopener">Add to HACS &#8599;</a>
+                    <a class="btn btn-secondary" href="https://github.com/linteldevapps/NavimowHA" target="_blank" rel="noopener">GitHub &#8599;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <section>
+            <h2 class="section-label">Overview</h2>
+            <p>This fork tracks Segway's initial Home Assistant integration while carrying community fixes for stale MQTT updates, circuit-breaker failures, and HTTP fallback behavior. It exposes Navimow mowers as native Home Assistant lawn mower entities with battery status and basic controls.</p>
+            <p>The integration uses your normal Navimow account through Segway's OAuth and cloud API. No separate Lintel account or API key is required, and Lintel does not operate a server for this integration.</p>
+        </section>
+        <section>
+            <h2 class="section-label">Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Mower Control</h3>
+                    <p>Start mowing, pause, resume, and send supported Navimow mowers back to dock from Home Assistant.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Realtime Updates</h3>
+                    <p>Uses Navimow MQTT updates when available, with faster stale-state detection and HTTP fallback.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>HACS Install</h3>
+                    <p>Install as a custom HACS integration from the Lintel-maintained fork.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Cloud Caveat</h3>
+                    <p>Requires Segway's Navimow cloud services. If Segway changes or disables the underlying API, the integration may need updates.</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2 class="section-label">Install</h2>
+            <p>Add this repository as a custom HACS integration:</p>
+            <div class="install-box">
+                <h3>Repository</h3>
+                <p><code>https://github.com/linteldevapps/NavimowHA</code></p>
+            </div>
+            <ol>
+                <li>Open HACS in Home Assistant.</li>
+                <li>Choose Custom repositories.</li>
+                <li>Use the repository URL above and category <code>Integration</code>.</li>
+                <li>Install Navimow, restart Home Assistant, then add the Navimow integration from Settings.</li>
+            </ol>
+        </section>
+        <section>
+            <h2 class="section-label">Maintenance</h2>
+            <div class="note">
+                <h3>Community-maintained fork</h3>
+                <p>This project builds on Segway's public integration and community pull requests. The goal is practical reliability for our own Home Assistant use and for other Navimow owners who need a maintained HACS source.</p>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <span>&#169; 2026 Lintel Apps</span>
+        <a href="/privacy">Privacy Policy</a>
+    </footer>
+    <script>
+    function toggleTheme(){var h=document.documentElement,n=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);renderToggle()}
+    function renderToggle(){var d=document.documentElement.getAttribute('data-theme')==='dark',b=document.querySelector('.theme-toggle');b.innerHTML=d?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'}
+    renderToggle();
+    </script>
+</body>
+</html>
